@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "template",
+  "id": "leads",
   "version": "${version}",
 
-  "name": "My Mod Template",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Lead Mod",
+  "description": "Allows you to use leads on more entities",
   "authors": [
     "quaoz"
   ],
   "contact": {
     "homepage": "https://github.com/quaoz/",
-    "sources": "https://github.com/quaoz/fabric-example-mod"
+    "sources": "https://github.com/quaoz/leads"
   },
 
   "license": "CC0-1.0",

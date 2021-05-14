@@ -4,10 +4,10 @@
   "package": "com.github.quaoz.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MobEntityMixin",
+    "TraderEntityMixin"
   ],
-  "client": [
-    "ExampleMixin"
-  ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }
