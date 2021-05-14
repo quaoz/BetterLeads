@@ -29,12 +29,13 @@ abstract class TraderEntityMixin extends PassiveEntity implements Npc {
 // Allows hostile mobs to be leashed
 // There is probably a better way to do this but this is the first mod i've ever made so yeah
 @Mixin(MobEntity.class)
-abstract class MobEntityMixin extends Entity implements Npc {
+abstract class MobEntityMixin extends Entity {
     protected MobEntityMixin(EntityType<? extends Entity> entityType, World world) {
         super(entityType, world);
     }
 
-    @Shadow public abstract boolean isLeashed();
+    @Shadow
+    public abstract boolean isLeashed();
 
     @Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
     private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
