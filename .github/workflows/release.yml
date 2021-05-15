@@ -17,13 +17,8 @@ jobs:
           java-version: 11
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: build-artifacts
-          path: build/libs
       - name: Upload assets to GitHub
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: 'build/libs/*.jar'
+          files: 'build/libs/*;LICENSE'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
