@@ -3,7 +3,7 @@
   "id": "leads",
   "version": "${version}",
 
-  "name": "Lead Mod",
+  "name": "Leads++",
   "description": "Allows you to use leads on more entities",
   "authors": [
     "quaoz"
