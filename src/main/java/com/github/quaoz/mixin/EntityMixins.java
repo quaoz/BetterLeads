@@ -1,5 +1,6 @@
 package com.github.quaoz.mixin;
 
+import com.github.quaoz.Leads;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Npc;
@@ -22,7 +23,7 @@ abstract class TraderEntityMixin extends PassiveEntity implements Npc {
 
     @Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
     private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(cir.getReturnValue() || !this.isLeashed());
+        cir.setReturnValue((cir.getReturnValue() || !this.isLeashed()) && Leads.get().config.getLeashableVillagers());
     }
 }
 
@@ -39,6 +40,6 @@ abstract class MobEntityMixin extends Entity {
 
     @Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
     private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(!this.isLeashed());
+        cir.setReturnValue(cir.getReturnValue() || !this.isLeashed());
     }
 }

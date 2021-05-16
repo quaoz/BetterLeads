@@ -13,18 +13,27 @@
     "sources": "https://github.com/quaoz/leads",
     "issues": "https://github.com/quaoz/leads/issues"
   },
-
   "license": "LGPL-3.0-only",
   "icon": "assets/leads/icon.png",
-
   "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.github.quaoz.Leads"
+    ],
+    "modmenu": [
+      "com.github.quaoz.LeadsModMenu"
+    ]
+  },
   "mixins": [
     "leads.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "~1.16.5",
+    "spruceui": ">=2.0.1"
+  },
+  "recommends": {
+    "modmenu": ">=1.14.0"
   }
 }
