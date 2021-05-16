@@ -1,5 +1,6 @@
 {
   "leads.menu.title": "Leads++",
-  "leads.villager.option": "Leashable villagers",
+  "lead.villager.option": "Leashable villagers",
+  "lead.hostiles.option": "Leashable hostile mobs",
   "gui.done": "Done"
 }

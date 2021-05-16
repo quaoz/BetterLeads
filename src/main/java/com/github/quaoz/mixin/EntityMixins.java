@@ -40,6 +40,6 @@ abstract class MobEntityMixin extends Entity {
 
     @Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
     private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(cir.getReturnValue() || !this.isLeashed());
+        cir.setReturnValue((cir.getReturnValue() || !this.isLeashed()) && Leads.get().config.getLeashableHostileMobs());
     }
 }

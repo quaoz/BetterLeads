@@ -10,6 +10,7 @@ public class Leads implements ClientModInitializer {
         return INSTANCE;
     }
 
+    // Loads the configs when the client starts
     @Override
     public void onInitializeClient() {
         INSTANCE = this;

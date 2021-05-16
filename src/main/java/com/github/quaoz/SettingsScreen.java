@@ -20,6 +20,7 @@ public class SettingsScreen extends SpruceScreen {
     private final LeadsConfig config;
     private final Screen parent;
     private final SpruceOption villagerOption;
+    private final SpruceOption hostileOption;
     private final SpruceOption resetOption;
     private SpruceOptionListWidget list;
 
@@ -28,10 +29,15 @@ public class SettingsScreen extends SpruceScreen {
         this.parent = parent;
         this.config = Leads.get().config;
 
-        this.villagerOption = new SpruceBooleanOption("leads.villager.option",
+        this.villagerOption = new SpruceBooleanOption("lead.villager.option",
                 this.config::getLeashableVillagers,
                 this.config::setLeashableVillagers,
-                new TranslatableText("leads.villager.option"), true);
+                new TranslatableText("lead.villager.option"), true);
+
+        this.hostileOption = new SpruceBooleanOption("lead.hostiles.option",
+                this.config::getLeashableHostileMobs,
+                this.config::setLeashableHostileMobs,
+                new TranslatableText("lead.hostiles.option"), true);
 
         this.resetOption = SpruceSimpleActionOption.reset(btn -> {
             this.config.reset();
@@ -50,6 +56,7 @@ public class SettingsScreen extends SpruceScreen {
 
         this.list = new SpruceOptionListWidget(Position.of(this, 0, 43), this.width, this.height - 43 - 29 - this.getTextHeight());
         this.list.addOptionEntry(this.villagerOption, null);
+        this.list.addOptionEntry(this.hostileOption, null);
         this.addChild(list);
 
         this.addChild(this.resetOption.createWidget(Position.of(this, this.width / 2 - 155, this.height - 29), 150));
