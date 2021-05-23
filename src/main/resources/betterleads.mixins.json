@@ -1,14 +1,14 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.github.quaoz.mixin",
+  "package": "com.github.quaoz.betterleads.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MobEntityMixin",
-    "TraderEntityMixin"
+	"MobEntityMixin",
+	"TraderEntityMixin"
   ],
   "client": [],
   "injectors": {
-    "defaultRequire": 1
+	"defaultRequire": 1
   }
 }

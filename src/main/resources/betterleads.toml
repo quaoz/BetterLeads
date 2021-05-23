@@ -1,5 +1,4 @@
 # Configures whether villagers and wandering traders can be leashed
 leashable_villagers = true
-
 # Configures whether hostile mobs can be leashed
 leashable_hostiles = false

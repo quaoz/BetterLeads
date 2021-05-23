@@ -1,31 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "leads",
+  "id": "betterleads",
+  "name": "BetterLeads",
   "version": "${version}",
-
-  "name": "Leads++",
   "description": "Allows you to use leads on more entities",
   "authors": [
-    "quaoz"
+	"quaoz"
   ],
   "contact": {
-    "homepage": "https://github.com/quaoz/leads",
-    "sources": "https://github.com/quaoz/leads",
-    "issues": "https://github.com/quaoz/leads/issues"
+	"homepage": "https://github.com/quaoz/BetterLeads",
+	"sources": "https://github.com/quaoz/BetterLeads",
+	"issues": "https://github.com/quaoz/BetterLeads/issues"
   },
   "license": "LGPL-3.0-only",
   "icon": "assets/leads/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
-      "com.github.quaoz.Leads"
-    ],
-    "modmenu": [
-      "com.github.quaoz.LeadsModMenu"
-    ]
+	"client": [
+	  "com.github.quaoz.betterleads.BetterLeads"
+	],
+	"modmenu": [
+	  "com.github.quaoz.betterleads.BetterLeadsModMenu"
+	]
   },
   "mixins": [
-    "leads.mixins.json"
+	"betterleads.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.7.4",
