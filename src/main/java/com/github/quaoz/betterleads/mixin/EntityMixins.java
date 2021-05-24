@@ -17,8 +17,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-// Phantom, ghast, slime, magma cube, shulkers
-
 // Allows trader entities (villagers and wandering traders) to be leashed
 @Mixin(MerchantEntity.class)
 abstract class MerchantEntityMixin extends PassiveEntity implements Npc, Merchant {
