@@ -56,6 +56,6 @@ abstract class MobEntityMixin extends LivingEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue((cir.getReturnValue() || !this.isLeashed()) && BetterLeads.get().config.getLeashableHostileMobs());
+		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableHostileMobs()));
 	}
 }
