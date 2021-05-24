@@ -11,7 +11,9 @@ public class BetterLeadsConfig {
 	private static final boolean DEFAULT_VILLAGERS_ENABLED = true;
 	private static final boolean DEFAULT_HOSTILES_ENABLED = false;
 	private static final boolean DEFAULT_WATER_CREATURES_ENABLED = false;
-	private static final boolean DEFAULT_TURTLES_ENABLED = false;
+	private static final boolean DEFAULT_TURTLES_ENABLED = true;
+	private static final boolean DEFAULT_AMBIENTS_ENABLED = false;
+	private static final boolean DEFAULT_PANDAS_ENABLED = false;
 	private final BetterLeads mod;
 	protected FileConfig config;
 
@@ -38,6 +40,8 @@ public class BetterLeadsConfig {
 		this.setLeashableHostileMobs(DEFAULT_HOSTILES_ENABLED);
 		this.setLeashableWaterCreatures(DEFAULT_WATER_CREATURES_ENABLED);
 		this.setLeashableTurtles(DEFAULT_TURTLES_ENABLED);
+		this.setLeashableAmbientMobs(DEFAULT_AMBIENTS_ENABLED);
+		this.setLeashablePandas(DEFAULT_PANDAS_ENABLED);
 		this.mod.log("Config reset");
 	}
 
@@ -76,8 +80,28 @@ public class BetterLeadsConfig {
 		return this.config.getOrElse("leashable_turtles", DEFAULT_TURTLES_ENABLED);
 	}
 
-	// Sets whether water creatures (fish) can be leashed
+	// Sets whether turtles can be leashed
 	public void setLeashableTurtles(boolean enabled) {
 		this.config.set("leashable_turtles", enabled);
+	}
+
+	// Returns whether ambient entities (bats) can be leashed
+	public boolean getLeashableAmbientMobs() {
+		return this.config.getOrElse("leashable_ambients", DEFAULT_AMBIENTS_ENABLED);
+	}
+
+	// Sets whether ambient entities (bats) can be leashed
+	public void setLeashableAmbientMobs(boolean enabled) {
+		this.config.set("leashable_ambients", enabled);
+	}
+
+	// Returns whether pandas can be leashed
+	public boolean getLeashablePandas() {
+		return this.config.getOrElse("leashable_pandas", DEFAULT_PANDAS_ENABLED);
+	}
+
+	// Sets whether pandas can be leashed
+	public void setLeashablePandas(boolean enabled) {
+		this.config.set("leashable_pandas", enabled);
 	}
 }

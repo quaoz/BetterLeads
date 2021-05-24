@@ -4,5 +4,7 @@
   "lead.hostiles.option": "Leashable hostile mobs",
   "lead.watercreatures.option": "Leashable fish and squid",
   "lead.turtles.option": "Leashable turtles",
+  "lead.ambients.option": "Leashable bats",
+  "lead.pandas.option": "Leashable pandas",
   "gui.done": "Done"
 }

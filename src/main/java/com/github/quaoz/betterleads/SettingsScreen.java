@@ -20,10 +20,12 @@ public class SettingsScreen extends SpruceScreen {
 
 	private final BetterLeadsConfig config;
 	private final Screen parent;
-	private final SpruceOption villagerOption;
-	private final SpruceOption hostileOption;
-	private final SpruceOption waterCreatureOption;
-	private final SpruceOption turtleOption;
+	private final SpruceOption merchantsOption;
+	private final SpruceOption hostilesOption;
+	private final SpruceOption waterCreaturesOption;
+	private final SpruceOption turtlesOption;
+	private final SpruceOption ambientsOption;
+	private final SpruceOption pandasOption;
 	private final SpruceOption resetOption;
 	private SpruceOptionListWidget list;
 
@@ -32,25 +34,35 @@ public class SettingsScreen extends SpruceScreen {
 		this.parent = parent;
 		this.config = BetterLeads.get().config;
 
-		this.villagerOption = new SpruceBooleanOption("lead.merchants.option",
+		this.merchantsOption = new SpruceBooleanOption("lead.merchants.option",
 				this.config::getLeashableVillagers,
 				this.config::setLeashableVillagers,
 				new TranslatableText("lead.merchants.option"), true);
 
-		this.hostileOption = new SpruceBooleanOption("lead.hostiles.option",
+		this.hostilesOption = new SpruceBooleanOption("lead.hostiles.option",
 				this.config::getLeashableHostileMobs,
 				this.config::setLeashableHostileMobs,
 				new TranslatableText("lead.hostiles.option"), true);
 
-		this.waterCreatureOption = new SpruceBooleanOption("lead.watercreatures.option",
+		this.waterCreaturesOption = new SpruceBooleanOption("lead.watercreatures.option",
 				this.config::getLeashableWaterCreatures,
 				this.config::setLeashableWaterCreatures,
 				new TranslatableText("lead.watercreatures.option"), true);
 
-		this.turtleOption = new SpruceBooleanOption("lead.turtles.option",
+		this.turtlesOption = new SpruceBooleanOption("lead.turtles.option",
 				this.config::getLeashableTurtles,
 				this.config::setLeashableTurtles,
 				new TranslatableText("lead.turtles.option"), true);
+
+		this.ambientsOption = new SpruceBooleanOption("lead.ambients.option",
+				this.config::getLeashableAmbientMobs,
+				this.config::setLeashableAmbientMobs,
+				new TranslatableText("lead.ambients.option"), true);
+
+		this.pandasOption = new SpruceBooleanOption("lead.pandas.option",
+				this.config::getLeashablePandas,
+				this.config::setLeashablePandas,
+				new TranslatableText("lead.pandas.option"), true);
 
 		this.resetOption = SpruceSimpleActionOption.reset(btn -> {
 			this.config.reset();
@@ -73,10 +85,11 @@ public class SettingsScreen extends SpruceScreen {
 		super.init();
 
 		this.list = new SpruceOptionListWidget(Position.of(this, 0, 43), this.width, this.height - 43 - 29 - this.getTextHeight());
-		this.list.addSingleOptionEntry(this.villagerOption);
-		this.list.addSingleOptionEntry(this.hostileOption);
-		this.list.addSingleOptionEntry(this.waterCreatureOption);
-		this.list.addSingleOptionEntry(this.turtleOption);
+		this.list.addSingleOptionEntry(this.merchantsOption);
+		this.list.addSingleOptionEntry(this.hostilesOption);
+		this.list.addSingleOptionEntry(this.waterCreaturesOption);
+		this.list.addSingleOptionEntry(this.turtlesOption);
+		this.list.addSingleOptionEntry(this.ambientsOption);
 		this.addChild(list);
 
 		this.addChild(this.resetOption.createWidget(Position.of(this, this.width / 2 - 155, this.height - 29), 150));

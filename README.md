@@ -6,16 +6,17 @@
 
 A mod which allows you to use leads on more entities.
 
-Currently, works with Merchant Entities (Villagers and Wandering Traders), most Hostile Mobs and Water Creatures (fish
-and squid), you can configure which of these categories are enabled through ModMenu.
+Currently, works with Merchant Entities (Villagers and Wandering Traders), most Hostile Mobs, Water Creatures (fish and
+squid), turtles and pandas, you can configure which of these categories are enabled through ModMenu.
 
-The Hostile Mobs which it doesn't work properly with are:
+The Mobs which it doesn't work properly with are:
 
 - Phantoms
 - Ghasts
 - Slimes
 - Magma-cubes
-- and Shulkers
+- Shulkers
+- and Bats
 
-Endermen also detach the lead when they teleport.
+Endermen also detach from their lead when they teleport.
 

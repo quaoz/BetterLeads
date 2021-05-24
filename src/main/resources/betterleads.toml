@@ -6,3 +6,7 @@ leashable_hostiles = false
 leashable_watercreatures = false
 # Configures whether turtles can be leashed
 leashable_turtles = false
+# Configures whether ambient mobs (bats) can be leashed
+leashable_ambients = false
+# Configures whether pandas can be leashed
+leashable_pandas = false

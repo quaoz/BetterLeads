@@ -4,8 +4,10 @@
   "package": "com.github.quaoz.betterleads.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+	"AmbientEntityMixin",
 	"MerchantEntityMixin",
 	"MobEntityMixin",
+	"PandaEntityMixin",
 	"TurtleEntityMixin",
 	"WaterCreatureEntityMixin"
   ],
