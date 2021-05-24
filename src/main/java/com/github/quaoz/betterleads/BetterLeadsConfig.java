@@ -28,12 +28,14 @@ public class BetterLeadsConfig {
 	// Loads the config
 	public void load() {
 		this.config.load();
+		this.mod.log("Config loaded");
 	}
 
 	// Resets the config
 	public void reset() {
 		this.setLeashableVillagers(DEFAULT_VILLAGER_ENABLED);
 		this.setLeashableHostileMobs(DEFAULT_HOSTILES_ENABLED);
+		this.mod.log("Config reset");
 	}
 
 	// Returns whether villagers can be leashed
