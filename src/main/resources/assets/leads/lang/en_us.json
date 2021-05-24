@@ -1,6 +1,7 @@
 {
   "betterleads.menu.title": "BetterLeads",
-  "lead.villager.option": "Leashable villagers",
+  "lead.merchants.option": "Leashable villagers",
   "lead.hostiles.option": "Leashable hostile mobs",
+  "lead.watercreatures.option": "Leashable fish",
   "gui.done": "Done"
 }

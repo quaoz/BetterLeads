@@ -10,6 +10,7 @@ public class BetterLeadsConfig {
 	public static final Path CONFIG_FILE_PATH = Paths.get("config/betterleads.toml");
 	private static final boolean DEFAULT_VILLAGER_ENABLED = true;
 	private static final boolean DEFAULT_HOSTILES_ENABLED = false;
+	private static final boolean DEFAULT_WATER_CREATURES_ENABLED = false;
 	private final BetterLeads mod;
 	protected FileConfig config;
 
@@ -53,5 +54,15 @@ public class BetterLeadsConfig {
 	// Sets whether hostiles can be leashed
 	public void setLeashableHostileMobs(boolean enabled) {
 		this.config.set("leashable_hostiles", enabled);
+	}
+
+	// Returns whether water creatures (fish) can be leashed
+	public boolean getLeashableWaterCreatures() {
+		return this.config.getOrElse("leashable_watercreatures", DEFAULT_WATER_CREATURES_ENABLED);
+	}
+
+	// Sets whether water creatures (fish) can be leashed
+	public void setLeashableWaterCreatures(boolean enabled) {
+		this.config.set("leashable_watercreatures", enabled);
 	}
 }

@@ -4,8 +4,9 @@
   "package": "com.github.quaoz.betterleads.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+	"MerchantEntityMixin",
 	"MobEntityMixin",
-	"TraderEntityMixin"
+	"WaterCreatureEntityMixin"
   ],
   "client": [],
   "injectors": {

@@ -2,3 +2,5 @@
 leashable_villagers = true
 # Configures whether hostile mobs can be leashed
 leashable_hostiles = false
+# Configures whether water creatures (fish) can be leashed
+leashable_watercreatures = false
