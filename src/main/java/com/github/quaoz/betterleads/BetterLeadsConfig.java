@@ -8,9 +8,10 @@ import java.nio.file.Paths;
 
 public class BetterLeadsConfig {
 	public static final Path CONFIG_FILE_PATH = Paths.get("config/betterleads.toml");
-	private static final boolean DEFAULT_VILLAGER_ENABLED = true;
+	private static final boolean DEFAULT_VILLAGERS_ENABLED = true;
 	private static final boolean DEFAULT_HOSTILES_ENABLED = false;
 	private static final boolean DEFAULT_WATER_CREATURES_ENABLED = false;
+	private static final boolean DEFAULT_TURTLES_ENABLED = false;
 	private final BetterLeads mod;
 	protected FileConfig config;
 
@@ -33,14 +34,16 @@ public class BetterLeadsConfig {
 
 	// Resets the config
 	public void reset() {
-		this.setLeashableVillagers(DEFAULT_VILLAGER_ENABLED);
+		this.setLeashableVillagers(DEFAULT_VILLAGERS_ENABLED);
 		this.setLeashableHostileMobs(DEFAULT_HOSTILES_ENABLED);
+		this.setLeashableWaterCreatures(DEFAULT_WATER_CREATURES_ENABLED);
+		this.setLeashableTurtles(DEFAULT_TURTLES_ENABLED);
 		this.mod.log("Config reset");
 	}
 
 	// Returns whether villagers can be leashed
 	public boolean getLeashableVillagers() {
-		return this.config.getOrElse("leashable_villagers", DEFAULT_VILLAGER_ENABLED);
+		return this.config.getOrElse("leashable_villagers", DEFAULT_VILLAGERS_ENABLED);
 	}
 
 	// Sets whether villagers can be leashed
@@ -66,5 +69,15 @@ public class BetterLeadsConfig {
 	// Sets whether water creatures (fish) can be leashed
 	public void setLeashableWaterCreatures(boolean enabled) {
 		this.config.set("leashable_watercreatures", enabled);
+	}
+
+	// Returns whether turtles can be leashed
+	public boolean getLeashableTurtles() {
+		return this.config.getOrElse("leashable_turtles", DEFAULT_TURTLES_ENABLED);
+	}
+
+	// Sets whether water creatures (fish) can be leashed
+	public void setLeashableTurtles(boolean enabled) {
+		this.config.set("leashable_turtles", enabled);
 	}
 }

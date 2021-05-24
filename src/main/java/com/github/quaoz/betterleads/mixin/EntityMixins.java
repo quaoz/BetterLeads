@@ -7,8 +7,10 @@ import net.minecraft.entity.Npc;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.village.Merchant;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -40,6 +42,19 @@ abstract class WaterCreatureEntityMixin extends PathAwareEntity {
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
 		cir.setReturnValue((cir.getReturnValue() || !this.isLeashed()) && BetterLeads.get().config.getLeashableWaterCreatures());
+	}
+}
+
+// Allows turtles to be leashed
+@Mixin(TurtleEntity.class)
+abstract class TurtleEntityMixin extends AnimalEntity {
+	protected TurtleEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
+		super(entityType, world);
+	}
+
+	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
+	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
+		cir.setReturnValue((cir.getReturnValue() || !this.isLeashed()) && BetterLeads.get().config.getLeashableTurtles());
 	}
 }
 

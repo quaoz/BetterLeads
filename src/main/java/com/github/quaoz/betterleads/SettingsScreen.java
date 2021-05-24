@@ -11,6 +11,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,6 +23,7 @@ public class SettingsScreen extends SpruceScreen {
 	private final SpruceOption villagerOption;
 	private final SpruceOption hostileOption;
 	private final SpruceOption waterCreatureOption;
+	private final SpruceOption turtleOption;
 	private final SpruceOption resetOption;
 	private SpruceOptionListWidget list;
 
@@ -45,6 +47,11 @@ public class SettingsScreen extends SpruceScreen {
 				this.config::setLeashableWaterCreatures,
 				new TranslatableText("lead.watercreatures.option"), true);
 
+		this.turtleOption = new SpruceBooleanOption("lead.turtles.option",
+				this.config::getLeashableTurtles,
+				this.config::setLeashableTurtles,
+				new TranslatableText("lead.turtles.option"), true);
+
 		this.resetOption = SpruceSimpleActionOption.reset(btn -> {
 			this.config.reset();
 			MinecraftClient client = MinecraftClient.getInstance();
@@ -57,13 +64,19 @@ public class SettingsScreen extends SpruceScreen {
 	}
 
 	@Override
+	public void renderBackground(MatrixStack matrices) {
+		this.renderBackgroundTexture(0);
+	}
+
+	@Override
 	protected void init() {
 		super.init();
 
 		this.list = new SpruceOptionListWidget(Position.of(this, 0, 43), this.width, this.height - 43 - 29 - this.getTextHeight());
-		this.list.addOptionEntry(this.villagerOption, null);
-		this.list.addOptionEntry(this.hostileOption, null);
-		this.list.addOptionEntry(this.waterCreatureOption, null);
+		this.list.addSingleOptionEntry(this.villagerOption);
+		this.list.addSingleOptionEntry(this.hostileOption);
+		this.list.addSingleOptionEntry(this.waterCreatureOption);
+		this.list.addSingleOptionEntry(this.turtleOption);
 		this.addChild(list);
 
 		this.addChild(this.resetOption.createWidget(Position.of(this, this.width / 2 - 155, this.height - 29), 150));

@@ -3,5 +3,6 @@
   "lead.merchants.option": "Leashable villagers",
   "lead.hostiles.option": "Leashable hostile mobs",
   "lead.watercreatures.option": "Leashable fish and squid",
+  "lead.turtles.option": "Leashable turtles",
   "gui.done": "Done"
 }

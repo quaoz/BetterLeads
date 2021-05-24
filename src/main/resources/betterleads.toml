@@ -4,3 +4,5 @@ leashable_villagers = true
 leashable_hostiles = false
 # Configures whether water creatures (fish and squid) can be leashed
 leashable_watercreatures = false
+# Configures whether turtles can be leashed
+leashable_turtles = false
