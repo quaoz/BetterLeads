@@ -6,7 +6,7 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = "${project.archives_base_name}-${project.minecraft_version}"
+archivesBaseName = "${project.archives_base_name}-mc${project.minecraft_version}"
 version = project.mod_version
 group = project.maven_group
 
@@ -53,6 +53,23 @@ dependencies {
 	compile 'com.electronwill.night-config:toml:3.6.0'
 }
 
+if (project.use_third_party_mods) {
+	repositories {
+		maven { url = "https://jitpack.io" }
+	}
+
+	dependencies {
+		// DataBreaker to reduce the time spent loading
+		// Don't use outside of dev environment
+		modRuntime("com.github.SuperCoder7979:databreaker:${project.databreaker_version}") {
+			transitive = false
+		}
+
+		// Sodium for big fps
+		modImplementation "com.github.CaffeineMC:sodium-fabric:${project.sodium_version}"
+	}
+}
+
 processResources {
 	inputs.property "version", project.version
 
@@ -73,7 +90,7 @@ tasks.withType(JavaCompile).configureEach {
 	// We'll use that if it's available, but otherwise we'll use the older option.
 	def targetVersion = 8
 	if (JavaVersion.current().isJava9Compatible()) {
-		 it.options.release = targetVersion
+		it.options.release = targetVersion
 	}
 }
 
@@ -86,7 +103,7 @@ java {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${project.archivesBaseName}" }
 	}
 }
 
