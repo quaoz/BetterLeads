@@ -1,14 +1,21 @@
 package com.github.quaoz.betterleads;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.MinecraftClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class BetterLeads implements ClientModInitializer {
 	public static final String MODID = "betterleads";
+	private static final MinecraftClient client = MinecraftClient.getInstance();
 	public final Logger logger = LogManager.getLogger(MODID);
-	private static BetterLeads INSTANCE;
 	public final BetterLeadsConfig config = new BetterLeadsConfig(this);
+	private static BetterLeads INSTANCE;
+
+	// Returns false when connected to a server
+	public final boolean isEnabled() {
+		return (client.isIntegratedServerRunning());
+	}
 
 	public static BetterLeads get() {
 		return INSTANCE;

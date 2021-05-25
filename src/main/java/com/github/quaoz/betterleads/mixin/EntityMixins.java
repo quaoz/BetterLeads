@@ -26,7 +26,9 @@ abstract class MerchantEntityMixin extends PassiveEntity implements Npc, Merchan
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableVillagers()));
+		if (BetterLeads.get().isEnabled()) {
+			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableVillagers()));
+		}
 	}
 }
 
@@ -39,7 +41,9 @@ abstract class WaterCreatureEntityMixin extends PathAwareEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableWaterCreatures()));
+		if (BetterLeads.get().isEnabled()) {
+			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableWaterCreatures()));
+		}
 	}
 }
 
@@ -52,7 +56,9 @@ abstract class TurtleEntityMixin extends AnimalEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableTurtles()));
+		if (BetterLeads.get().isEnabled()) {
+			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableTurtles()));
+		}
 	}
 }
 
@@ -65,7 +71,9 @@ abstract class AmbientEntityMixin extends MobEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableAmbientMobs()));
+		if (BetterLeads.get().isEnabled()) {
+			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableAmbientMobs()));
+		}
 	}
 }
 
@@ -78,7 +86,9 @@ abstract class PandaEntityMixin extends AnimalEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashablePandas()));
+		if (BetterLeads.get().isEnabled()) {
+			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashablePandas()));
+		}
 	}
 }
 
@@ -95,6 +105,8 @@ abstract class MobEntityMixin extends LivingEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableHostileMobs()));
+		if (BetterLeads.get().isEnabled()) {
+			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableHostileMobs()));
+		}
 	}
 }
