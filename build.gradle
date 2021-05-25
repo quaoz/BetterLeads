@@ -6,7 +6,7 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = project.archives_base_name
+archivesBaseName = "${project.archives_base_name}-${project.minecraft_version}"
 version = project.mod_version
 group = project.maven_group
 
@@ -42,11 +42,14 @@ dependencies {
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 
+	// ModMenu dependency
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
+	// SpruceUI dependency
 	modImplementation "com.github.lambdaurora:spruceui:${project.spruceui_version}"
 	include "com.github.lambdaurora:spruceui:${project.spruceui_version}"
 
+	// Toml Night-Config
 	compile 'com.electronwill.night-config:toml:3.6.0'
 }
 
