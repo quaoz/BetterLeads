@@ -22,7 +22,6 @@ public class BetterLeadsConfig {
 		this.mod = mod;
 		this.config = FileConfig.builder(CONFIG_FILE_PATH)
 				.defaultResource("/betterleads.toml")
-				.concurrent()
 				.autoreload()
 				.autosave()
 				.build();
@@ -42,6 +41,7 @@ public class BetterLeadsConfig {
 		this.setLeashableTurtles(DEFAULT_TURTLES_ENABLED);
 		this.setLeashableAmbientMobs(DEFAULT_AMBIENTS_ENABLED);
 		this.setLeashablePandas(DEFAULT_PANDAS_ENABLED);
+
 		this.mod.log("Config reset");
 	}
 

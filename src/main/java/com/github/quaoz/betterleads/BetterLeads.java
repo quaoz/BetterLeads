@@ -7,13 +7,13 @@ import org.apache.logging.log4j.Logger;
 
 public class BetterLeads implements ClientModInitializer {
 	public static final String MODID = "betterleads";
+	private static BetterLeads INSTANCE;
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 	public final Logger logger = LogManager.getLogger(MODID);
 	public final BetterLeadsConfig config = new BetterLeadsConfig(this);
-	private static BetterLeads INSTANCE;
 
 	// Returns false when connected to a server
-	public final boolean isEnabled() {
+	public boolean isEnabled() {
 		return (client.isIntegratedServerRunning());
 	}
 
@@ -28,7 +28,6 @@ public class BetterLeads implements ClientModInitializer {
 		this.log("uwu");
 
 		this.config.load();
-
 	}
 
 	public void log(String info) {

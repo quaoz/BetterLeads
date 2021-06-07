@@ -1,14 +1,18 @@
 plugins {
-	id 'fabric-loom' version '0.6-SNAPSHOT'
+	id 'fabric-loom' version '0.8-SNAPSHOT'
 	id 'maven-publish'
+	id 'java-library'
+	id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
+
+import net.fabricmc.loom.task.RemapJarTask
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = "${project.archives_base_name}-mc${project.minecraft_version}"
-version = project.mod_version
 group = project.maven_group
+version = "${project.mod_version}+${project.minecraft_version}"
+archivesBaseName = project.archives_base_name
 
 repositories {
 	// Add repositories to retrieve artifacts from in here.
@@ -19,15 +23,26 @@ repositories {
 
 	mavenCentral()
 
-	maven { url = "https://maven.terraformersmc.com/" }
+	maven {
+		name "Terraformersmc"
+		url = "https://maven.terraformersmc.com/"
+	}
+
+	maven {
+		name "Jitpack"
+		url = "https://jitpack.io"
+	}
 
 	maven {
 		name = "AperLambda"
 		url = 'https://aperlambda.github.io/maven'
 	}
 
-	maven { url = "https://jitpack.io" }
+}
 
+configurations {
+	shadow
+	api.extendsFrom shadow
 }
 
 dependencies {
@@ -50,13 +65,11 @@ dependencies {
 	include "com.github.lambdaurora:spruceui:${project.spruceui_version}"
 
 	// Toml Night-Config
-	compile 'com.electronwill.night-config:toml:3.6.0'
+	shadow "com.electronwill.night-config:core:3.6.3"
+	shadow 'com.electronwill.night-config:toml:3.6.0'
 }
 
 if (project.use_third_party_mods) {
-	repositories {
-		maven { url = "https://jitpack.io" }
-	}
 
 	dependencies {
 		// DataBreaker to reduce the time spent loading
@@ -106,6 +119,23 @@ jar {
 		rename { "${it}_${project.archivesBaseName}" }
 	}
 }
+
+shadowJar {
+	dependsOn(project(":").jar)
+	configurations = [project.configurations.shadow]
+	archiveClassifier.set('dev')
+
+	relocate 'com.electronwill.nightconfig', 'com.github.quaoz.shadow.nightconfig'
+}
+
+task shadowRemapJar(type: RemapJarTask) {
+	dependsOn shadowJar
+
+	input.set(file("${project.buildDir}/libs/$archivesBaseName-${project.version}-dev.jar"))
+	archiveFileName = "${archivesBaseName}-${project.version}.jar"
+	addNestedDependencies.set(true)
+}
+build.dependsOn(shadowRemapJar)
 
 // configure the maven publication
 publishing {
