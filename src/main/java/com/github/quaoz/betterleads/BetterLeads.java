@@ -14,6 +14,7 @@ public class BetterLeads implements ClientModInitializer {
 
 	// Returns false when connected to a server
 	public boolean isEnabled() {
+		this.log("The Integrated Server isn't running, disabling BetterLeads");
 		return (client.isIntegratedServerRunning());
 	}
 
@@ -25,7 +26,7 @@ public class BetterLeads implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		INSTANCE = this;
-		this.log("uwu");
+		this.log("its alive");
 
 		this.config.load();
 	}

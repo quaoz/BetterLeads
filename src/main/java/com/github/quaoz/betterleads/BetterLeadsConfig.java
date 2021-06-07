@@ -1,13 +1,13 @@
 package com.github.quaoz.betterleads;
 
 import com.electronwill.nightconfig.core.file.FileConfig;
+import net.fabricmc.loader.api.FabricLoader;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class BetterLeadsConfig {
-	public static final Path CONFIG_FILE_PATH = Paths.get("config/betterleads.toml");
+	public static final Path CONFIG_FILE_PATH = FabricLoader.getInstance().getConfigDir().resolve("betterleads.toml");
 	private static final boolean DEFAULT_VILLAGERS_ENABLED = true;
 	private static final boolean DEFAULT_HOSTILES_ENABLED = false;
 	private static final boolean DEFAULT_WATER_CREATURES_ENABLED = false;
