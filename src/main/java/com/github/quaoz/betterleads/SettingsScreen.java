@@ -1,12 +1,12 @@
 package com.github.quaoz.betterleads;
 
-import me.lambdaurora.spruceui.Position;
-import me.lambdaurora.spruceui.option.SpruceBooleanOption;
-import me.lambdaurora.spruceui.option.SpruceOption;
-import me.lambdaurora.spruceui.option.SpruceSimpleActionOption;
-import me.lambdaurora.spruceui.screen.SpruceScreen;
-import me.lambdaurora.spruceui.widget.SpruceButtonWidget;
-import me.lambdaurora.spruceui.widget.container.SpruceOptionListWidget;
+import dev.lambdaurora.spruceui.Position;
+import dev.lambdaurora.spruceui.option.SpruceBooleanOption;
+import dev.lambdaurora.spruceui.option.SpruceOption;
+import dev.lambdaurora.spruceui.option.SpruceSimpleActionOption;
+import dev.lambdaurora.spruceui.screen.SpruceScreen;
+import dev.lambdaurora.spruceui.widget.SpruceButtonWidget;
+import dev.lambdaurora.spruceui.widget.container.SpruceOptionListWidget;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -90,10 +90,10 @@ public class SettingsScreen extends SpruceScreen {
 		list.addSingleOptionEntry(this.turtlesOption);
 		list.addSingleOptionEntry(this.ambientsOption);
 		list.addSingleOptionEntry(this.pandasOption);
-		this.addChild(list);
+		this.addDrawableChild(list);
 
-		this.addChild(this.resetOption.createWidget(Position.of(this, this.width / 2 - 155, this.height - 29), 150));
-		this.addChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 155 + 160, this.height - 29), 150, 20, new TranslatableText("gui.done"),
+		this.addDrawableChild(this.resetOption.createWidget(Position.of(this, this.width / 2 - 155, this.height - 29), 150));
+		this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 155 + 160, this.height - 29), 150, 20, new TranslatableText("gui.done"),
 				(btn) -> {
 					assert this.client != null;
 					this.client.openScreen(this.parent);

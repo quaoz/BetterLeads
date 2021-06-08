@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.8-SNAPSHOT'
+	id 'fabric-loom' version '0.8.+'
 	id 'maven-publish'
 	id 'java-library'
 	id 'com.github.johnrengelman.shadow' version '7.0.0'
@@ -7,8 +7,7 @@ plugins {
 
 import net.fabricmc.loom.task.RemapJarTask
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+def targetJavaVersion = 16
 
 group = project.maven_group
 version = "${project.mod_version}+${project.minecraft_version}"
@@ -38,6 +37,11 @@ repositories {
 		url = 'https://aperlambda.github.io/maven'
 	}
 
+	maven {
+		name = 'Gegy'
+		url = 'https://maven.gegy.dev'
+	}
+
 }
 
 configurations {
@@ -61,8 +65,8 @@ dependencies {
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
 	// SpruceUI dependency
-	modImplementation "com.github.lambdaurora:spruceui:${project.spruceui_version}"
-	include "com.github.lambdaurora:spruceui:${project.spruceui_version}"
+	modImplementation "dev.lambdaurora:spruceui:${project.spruceui_version}"
+	include "dev.lambdaurora:spruceui:${project.spruceui_version}"
 
 	// Toml Night-Config
 	shadow "com.electronwill.night-config:core:3.6.3"
@@ -108,9 +112,9 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 java {
-	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-	// if it is present.
-	// If you remove this line, sources will not be generated.
+	sourceCompatibility = JavaVersion.toVersion(targetJavaVersion)
+	targetCompatibility = JavaVersion.toVersion(targetJavaVersion)
+
 	withSourcesJar()
 }
 
