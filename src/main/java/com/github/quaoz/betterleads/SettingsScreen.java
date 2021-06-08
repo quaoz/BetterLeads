@@ -27,7 +27,6 @@ public class SettingsScreen extends SpruceScreen {
 	private final SpruceOption ambientsOption;
 	private final SpruceOption pandasOption;
 	private final SpruceOption resetOption;
-	private SpruceOptionListWidget list;
 
 	public SettingsScreen(@Nullable Screen parent) {
 		super(new TranslatableText("betterleads.menu.title"));
@@ -84,12 +83,13 @@ public class SettingsScreen extends SpruceScreen {
 	protected void init() {
 		super.init();
 
-		this.list = new SpruceOptionListWidget(Position.of(this, 0, 43), this.width, this.height - 43 - 29 - this.getTextHeight());
-		this.list.addSingleOptionEntry(this.merchantsOption);
-		this.list.addSingleOptionEntry(this.hostilesOption);
-		this.list.addSingleOptionEntry(this.waterCreaturesOption);
-		this.list.addSingleOptionEntry(this.turtlesOption);
-		this.list.addSingleOptionEntry(this.ambientsOption);
+		SpruceOptionListWidget list = new SpruceOptionListWidget(Position.of(this, 0, 43), this.width, this.height - 43 - 29 - this.getTextHeight());
+		list.addSingleOptionEntry(this.merchantsOption);
+		list.addSingleOptionEntry(this.hostilesOption);
+		list.addSingleOptionEntry(this.waterCreaturesOption);
+		list.addSingleOptionEntry(this.turtlesOption);
+		list.addSingleOptionEntry(this.ambientsOption);
+		list.addSingleOptionEntry(this.pandasOption);
 		this.addChild(list);
 
 		this.addChild(this.resetOption.createWidget(Position.of(this, this.width / 2 - 155, this.height - 29), 150));
