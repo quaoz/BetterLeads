@@ -1,6 +1,7 @@
-![GitHub](https://img.shields.io/github/license/quaoz/BetterLeads)
+![GitHub License](https://img.shields.io/github/license/quaoz/BetterLeads)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/quaoz/BetterLeads/build)
 ![GitHub issues](https://img.shields.io/github/issues-raw/quaoz/BetterLeads)
+
 
 # Leads
 
@@ -19,3 +20,13 @@ The Mobs which it doesn't work properly with are:
 - and Bats
 
 Endermen also detach from their lead when they teleport.
+
+## Usage
+
+Put the latest release from [Modrinth](https://modrinth.com/mod/betterleads)
+or [GitHub](https://github.com/quaoz/BetterLeads/releases) in your mods folder along
+with [Fabric API](https://modrinth.com/mod/fabric-api) and [ModMenu](https://modrinth.com/mod/modmenu).
+
+## Building
+
+Clone the repo and run `./gradlew shadowRemapJar`
