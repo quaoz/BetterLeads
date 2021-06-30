@@ -17,9 +17,9 @@ The Mobs which it doesn't work properly with are:
 - Slimes
 - Magma-cubes
 - Shulkers
+- Vexs
 - and Bats
 
-Endermen also detach from their lead when they teleport.
 
 ## Usage
 

@@ -3,9 +3,9 @@ leashable_villagers = true
 # Configures whether hostile mobs can be leashed
 leashable_hostiles = false
 # Configures whether water creatures (fish and squid) can be leashed
-leashable_watercreatures = false
+leashable_watercreatures = true
 # Configures whether turtles can be leashed
-leashable_turtles = false
+leashable_turtles = true
 # Configures whether ambient mobs (bats) can be leashed
 leashable_ambients = false
 # Configures whether pandas can be leashed

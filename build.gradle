@@ -74,16 +74,19 @@ dependencies {
 }
 
 if (project.use_third_party_mods) {
+	repositories {
+		maven {
+			name = "Gegy"
+			url = "https://maven.gegy.dev"
+		}
+	}
 
 	dependencies {
 		// DataBreaker to reduce the time spent loading
 		// Don't use outside of dev environment
-		modRuntime("com.github.SuperCoder7979:databreaker:${project.databreaker_version}") {
+		modRuntime("supercoder79:databreaker:${project.databreaker_version}") {
 			transitive = false
 		}
-
-		// Sodium for big fps
-		modImplementation "com.github.CaffeineMC:sodium-fabric:${project.sodium_version}"
 	}
 }
 
@@ -102,13 +105,7 @@ tasks.withType(JavaCompile).configureEach {
 	// If Javadoc is generated, this must be specified in that task too.
 	it.options.encoding = "UTF-8"
 
-	// The Minecraft launcher currently installs Java 8 for users, so your mod probably wants to target Java 8 too
-	// JDK 9 introduced a new way of specifying this that will make sure no newer classes or methods are used.
-	// We'll use that if it's available, but otherwise we'll use the older option.
-	def targetVersion = 8
-	if (JavaVersion.current().isJava9Compatible()) {
-		it.options.release = targetVersion
-	}
+	it.options.release = 16
 }
 
 java {

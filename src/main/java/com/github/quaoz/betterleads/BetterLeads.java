@@ -32,11 +32,11 @@ public class BetterLeads implements ClientModInitializer {
 	}
 
 	public void log(String info) {
-		this.logger.info("[BetterLeads] " + info);
+		this.logger.info("[BetterLeads/INFO] " + info);
 	}
 
 	public void warn(String info) {
-		this.logger.warn("[BetterLeads] " + info);
+		this.logger.warn("[BetterLeads/WARN] " + info);
 	}
 
 }

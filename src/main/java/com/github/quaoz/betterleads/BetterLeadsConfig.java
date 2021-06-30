@@ -10,7 +10,7 @@ public class BetterLeadsConfig {
 	public static final Path CONFIG_FILE_PATH = FabricLoader.getInstance().getConfigDir().resolve("betterleads.toml");
 	private static final boolean DEFAULT_VILLAGERS_ENABLED = true;
 	private static final boolean DEFAULT_HOSTILES_ENABLED = false;
-	private static final boolean DEFAULT_WATER_CREATURES_ENABLED = false;
+	private static final boolean DEFAULT_WATER_CREATURES_ENABLED = true;
 	private static final boolean DEFAULT_TURTLES_ENABLED = true;
 	private static final boolean DEFAULT_AMBIENTS_ENABLED = false;
 	private static final boolean DEFAULT_PANDAS_ENABLED = false;
