@@ -16,9 +16,9 @@
   "icon": "assets/leads/icon.png",
   "environment": "*",
   "entrypoints": {
-	"client": [
-	  "com.github.quaoz.betterleads.BetterLeads"
-	],
+	"main": [
+      "com.github.quaoz.betterleads.BetterLeads"
+    ],
 	"modmenu": [
 	  "com.github.quaoz.betterleads.BetterLeadsModMenu"
 	]

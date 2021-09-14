@@ -26,9 +26,7 @@ abstract class MerchantEntityMixin extends PassiveEntity implements Npc, Merchan
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		if (BetterLeads.get().isEnabled()) {
 			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableVillagers()));
-		}
 	}
 }
 
@@ -41,9 +39,7 @@ abstract class WaterCreatureEntityMixin extends PathAwareEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		if (BetterLeads.get().isEnabled()) {
 			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableWaterCreatures()));
-		}
 	}
 }
 
@@ -56,9 +52,7 @@ abstract class TurtleEntityMixin extends AnimalEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		if (BetterLeads.get().isEnabled()) {
-			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableTurtles()));
-		}
+		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableTurtles()));
 	}
 }
 
@@ -71,9 +65,7 @@ abstract class AmbientEntityMixin extends MobEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		if (BetterLeads.get().isEnabled()) {
-			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableAmbientMobs()));
-		}
+		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableAmbientMobs()));
 	}
 }
 
@@ -86,14 +78,11 @@ abstract class PandaEntityMixin extends AnimalEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		if (BetterLeads.get().isEnabled()) {
-			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashablePandas()));
-		}
+		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashablePandas()));
 	}
 }
 
 // Allows hostile mobs to be leashed
-// There is probably a better way to do this but this is the first mod i've ever made so yeah
 @Mixin(MobEntity.class)
 abstract class MobEntityMixin extends LivingEntity {
 	protected MobEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
@@ -105,8 +94,6 @@ abstract class MobEntityMixin extends LivingEntity {
 
 	@Inject(method = "canBeLeashedBy", at = @At("RETURN"), cancellable = true)
 	private void onCanBeLeashedBy(CallbackInfoReturnable<Boolean> cir) {
-		if (BetterLeads.get().isEnabled()) {
-			cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableHostileMobs()));
-		}
+		cir.setReturnValue((cir.getReturnValue() || (!this.isLeashed()) && BetterLeads.get().config.getLeashableHostileMobs()));
 	}
 }
