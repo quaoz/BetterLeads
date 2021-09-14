@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.8.+'
+	id 'fabric-loom' version '0.9.+'
 	id 'maven-publish'
 	id 'java-library'
 	id 'com.github.johnrengelman.shadow' version '7.0.0'
@@ -69,8 +69,8 @@ dependencies {
 	include "dev.lambdaurora:spruceui:${project.spruceui_version}"
 
 	// Toml Night-Config
-	shadow "com.electronwill.night-config:core:3.6.3"
-	shadow 'com.electronwill.night-config:toml:3.6.0'
+	shadow 'com.electronwill.night-config:core:3.6.4'
+	shadow 'com.electronwill.night-config:toml:3.6.4'
 }
 
 if (project.use_third_party_mods) {

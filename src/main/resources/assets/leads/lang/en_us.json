@@ -1,10 +1,10 @@
 {
   "betterleads.menu.title": "BetterLeads",
-  "lead.merchants.option": "Leashable villagers",
-  "lead.hostiles.option": "Leashable hostile mobs",
-  "lead.watercreatures.option": "Leashable fish and squid",
-  "lead.turtles.option": "Leashable turtles",
-  "lead.ambients.option": "Leashable bats",
-  "lead.pandas.option": "Leashable pandas",
+  "betterleads.merchants.option": "Leashable villagers",
+  "betterleads.hostiles.option": "Leashable hostile mobs",
+  "betterleads.watercreatures.option": "Leashable fish and squid",
+  "betterleads.turtles.option": "Leashable turtles",
+  "betterleads.ambients.option": "Leashable bats",
+  "betterleads.pandas.option": "Leashable pandas",
   "gui.done": "Done"
 }

@@ -5,7 +5,7 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "AmbientEntityMixin",
-    "EndermanNoTeleport",
+    "EndermanTeleportMixin",
     "MerchantEntityMixin",
     "MobEntityMixin",
     "PandaEntityMixin",

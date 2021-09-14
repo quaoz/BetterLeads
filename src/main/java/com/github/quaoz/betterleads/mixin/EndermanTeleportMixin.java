@@ -11,12 +11,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
 @Mixin(EndermanEntity.class)
-public class EndermanNoTeleport extends HostileEntity {
-	public EndermanNoTeleport(EntityType<? extends EndermanEntity> entityType, World world) {
+abstract class EndermanTeleportMixin extends HostileEntity {
+	public EndermanTeleportMixin(EntityType<? extends EndermanEntity> entityType, World world) {
 		super(entityType, world);
 	}
 
-	@Inject(method = "teleportRandomly", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "teleportRandomly", at = @At("RETURN"), cancellable = true)
 	private void teleportRandomly(CallbackInfoReturnable<Boolean> cir) {
 		if (this.isLeashed()) {
 			cir.setReturnValue(false);
