@@ -23,8 +23,7 @@ The Mobs which it doesn't work properly with are:
 
 ## Usage
 
-Put the latest release from [Modrinth](https://modrinth.com/mod/betterleads)
-or [GitHub](https://github.com/quaoz/BetterLeads/releases) in your mods folder along
+Put the latest release from [Modrinth](https://modrinth.com/mod/betterleads), [GitHub](https://github.com/quaoz/BetterLeads/releases) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/betterleads) in your mods folder along
 with [Fabric API](https://modrinth.com/mod/fabric-api) and [ModMenu](https://modrinth.com/mod/modmenu).
 
 ## Building
