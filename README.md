@@ -3,7 +3,7 @@
 ![GitHub issues](https://img.shields.io/github/issues-raw/quaoz/BetterLeads)
 
 
-# Leads
+# BetterLeads
 
 A mod that allows you to use leads on more entities.
 
