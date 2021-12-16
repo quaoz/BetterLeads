@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.9.+'
+	id 'fabric-loom' version '0.10-SNAPSHOT'
 	id 'maven-publish'
 	id 'java-library'
 	id 'com.github.johnrengelman.shadow' version '7.0.0'
@@ -7,7 +7,7 @@ plugins {
 
 import net.fabricmc.loom.task.RemapJarTask
 
-def targetJavaVersion = 16
+def targetJavaVersion = 17
 
 group = project.maven_group
 version = "${project.mod_version}+${project.minecraft_version}"
@@ -82,11 +82,12 @@ if (project.use_third_party_mods) {
 	}
 
 	dependencies {
+		// Currently broken on 1.18.1, temporarily disabling
 		// DataBreaker to reduce the time spent loading
 		// Don't use outside of dev environment
-		modRuntime("supercoder79:databreaker:${project.databreaker_version}") {
-			transitive = false
-		}
+//		modRuntime("supercoder79:databreaker:${project.databreaker_version}") {
+//			transitive = false
+//		}
 	}
 }
 
@@ -105,7 +106,7 @@ tasks.withType(JavaCompile).configureEach {
 	// If Javadoc is generated, this must be specified in that task too.
 	it.options.encoding = "UTF-8"
 
-	it.options.release = 16
+	it.options.release = 17
 }
 
 java {
