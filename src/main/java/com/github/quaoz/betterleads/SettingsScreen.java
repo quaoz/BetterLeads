@@ -12,7 +12,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import org.jetbrains.annotations.Nullable;
 
 @Environment(EnvType.CLIENT)
@@ -29,39 +29,39 @@ public class SettingsScreen extends SpruceScreen {
 	private final SpruceOption resetOption;
 
 	public SettingsScreen(@Nullable Screen parent) {
-		super(new TranslatableText("betterleads.menu.title"));
+		super(Text.translatable("betterleads.menu.title"));
 		this.parent = parent;
 		this.config = BetterLeads.get().config;
 
 		this.merchantsOption = new SpruceBooleanOption("betterleads.merchants.option",
 				this.config::getLeashableVillagers,
 				this.config::setLeashableVillagers,
-				new TranslatableText("betterleads.merchants.option"), true);
+				Text.translatable("betterleads.merchants.option"), true);
 
 		this.hostilesOption = new SpruceBooleanOption("betterleads.hostiles.option",
 				this.config::getLeashableHostileMobs,
 				this.config::setLeashableHostileMobs,
-				new TranslatableText("betterleads.hostiles.option"), true);
+				Text.translatable("betterleads.hostiles.option"), true);
 
 		this.waterCreaturesOption = new SpruceBooleanOption("betterleads.watercreatures.option",
 				this.config::getLeashableWaterCreatures,
 				this.config::setLeashableWaterCreatures,
-				new TranslatableText("betterleads.watercreatures.option"), true);
+				Text.translatable("betterleads.watercreatures.option"), true);
 
 		this.turtlesOption = new SpruceBooleanOption("betterleads.turtles.option",
 				this.config::getLeashableTurtles,
 				this.config::setLeashableTurtles,
-				new TranslatableText("betterleads.turtles.option"), true);
+				Text.translatable("betterleads.turtles.option"), true);
 
 		this.ambientsOption = new SpruceBooleanOption("betterleads.ambients.option",
 				this.config::getLeashableAmbientMobs,
 				this.config::setLeashableAmbientMobs,
-				new TranslatableText("betterleads.ambients.option"), true);
+				Text.translatable("betterleads.ambients.option"), true);
 
 		this.pandasOption = new SpruceBooleanOption("betterleads.pandas.option",
 				this.config::getLeashablePandas,
 				this.config::setLeashablePandas,
-				new TranslatableText("betterleads.pandas.option"), true);
+				Text.translatable("betterleads.pandas.option"), true);
 
 		this.resetOption = SpruceSimpleActionOption.reset(btn -> {
 			this.config.reset();
@@ -93,7 +93,7 @@ public class SettingsScreen extends SpruceScreen {
 		this.addDrawableChild(list);
 
 		this.addDrawableChild(this.resetOption.createWidget(Position.of(this, this.width / 2 - 155, this.height - 29), 150));
-		this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 155 + 160, this.height - 29), 150, 20, new TranslatableText("gui.done"),
+		this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 155 + 160, this.height - 29), 150, 20, Text.translatable("gui.done"),
 				(btn) -> {
 					assert this.client != null;
 					this.client.setScreen(this.parent);
