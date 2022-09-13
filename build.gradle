@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.10-SNAPSHOT'
+	id 'fabric-loom' version '1.0-SNAPSHOT'
 	id 'maven-publish'
 	id 'java-library'
 	id 'com.github.johnrengelman.shadow' version '7.0.0'
@@ -23,6 +23,11 @@ repositories {
 	mavenCentral()
 
 	maven {
+		name = 'Fabric'
+		url = 'https://maven.fabricmc.net/'
+	}
+
+	maven {
 		name "Terraformersmc"
 		url = "https://maven.terraformersmc.com/"
 	}
@@ -39,7 +44,7 @@ repositories {
 
 	maven {
 		name = 'Gegy'
-		url = 'https://maven.gegy.dev'
+		url = 'https://maven.gegy.dev/'
 	}
 
 }
