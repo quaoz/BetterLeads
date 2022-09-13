@@ -74,8 +74,8 @@ dependencies {
 	include "dev.lambdaurora:spruceui:${project.spruceui_version}"
 
 	// Toml Night-Config
-	shadow 'com.electronwill.night-config:core:3.6.4'
-	shadow 'com.electronwill.night-config:toml:3.6.4'
+	shadow 'com.electronwill.night-config:core:3.6.6'
+	shadow 'com.electronwill.night-config:toml:3.6.6'
 }
 
 if (project.use_third_party_mods) {
