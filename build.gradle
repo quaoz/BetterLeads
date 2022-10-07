@@ -135,14 +135,18 @@ shadowJar {
 	relocate 'com.electronwill.nightconfig', 'com.github.quaoz.shadow.nightconfig'
 }
 
-task shadowRemapJar(type: RemapJarTask) {
-	dependsOn shadowJar
-
-	input.set(file("${project.buildDir}/libs/$archivesBaseName-${project.version}-dev.jar"))
-	archiveFileName = "${archivesBaseName}-${project.version}.jar"
-	addNestedDependencies.set(true)
+remapJar {
+	inputFile = shadowJar.archiveFile
 }
-build.dependsOn(shadowRemapJar)
+
+//task shadowRemapJar(type: RemapJarTask) {
+//	dependsOn shadowJar
+//
+//	input.set(file("${project.buildDir}/libs/$archivesBaseName-${project.version}-dev.jar"))
+//	archiveFileName = "${archivesBaseName}-${project.version}.jar"
+//	addNestedDependencies.set(true)
+//}
+//build.dependsOn(tasks.shadowRemapJar)
 
 // configure the maven publication
 publishing {
