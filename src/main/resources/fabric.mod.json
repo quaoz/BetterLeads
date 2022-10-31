@@ -1,39 +1,39 @@
 {
   "schemaVersion": 1,
-  "id": "betterleads",
-  "name": "BetterLeads",
-  "version": "${version}",
-  "description": "Allows you to use leads on more entities",
-  "authors": [
-	"quaoz"
+  "id":            "betterleads",
+  "name":          "BetterLeads",
+  "version":       "${version}",
+  "description":   "Allows you to use leads on more entities",
+  "authors":       [
+    "quaoz"
   ],
-  "contact": {
-	"homepage": "https://github.com/quaoz/BetterLeads",
-	"sources": "https://github.com/quaoz/BetterLeads",
-	"issues": "https://github.com/quaoz/BetterLeads/issues"
+  "contact":       {
+    "homepage": "https://github.com/quaoz/BetterLeads",
+    "sources":  "https://github.com/quaoz/BetterLeads",
+    "issues":   "https://github.com/quaoz/BetterLeads/issues"
   },
-  "license": "LGPL-3.0-only",
-  "icon": "assets/leads/icon.png",
-  "environment": "*",
-  "entrypoints": {
-	"main": [
+  "license":       "LGPL-3.0-only",
+  "icon":          "assets/leads/icon.png",
+  "environment":   "*",
+  "entrypoints":   {
+    "main":    [
       "com.github.quaoz.betterleads.BetterLeads"
     ],
-	"modmenu": [
-	  "com.github.quaoz.betterleads.BetterLeadsModMenu"
-	]
+    "modmenu": [
+      "com.github.quaoz.betterleads.BetterLeadsModMenu"
+    ]
   },
-  "mixins": [
-	"betterleads.mixins.json"
+  "mixins":        [
+    "betterleads.mixins.json"
   ],
-  "depends": {
+  "depends":       {
     "fabricloader": ">=0.7.4",
-    "fabric": "*",
-    "minecraft": ">=1.18",
-    "spruceui": ">=3.1.0",
-    "java": "17"
+    "fabric":       "*",
+    "minecraft":    "^1.19",
+    "spruceui":     ">=3.1.0",
+    "java":         ">=17"
   },
-  "recommends": {
+  "recommends":    {
     "modmenu": ">=2.0.0-beta.7"
   }
 }

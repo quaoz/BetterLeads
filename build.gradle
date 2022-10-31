@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.10-SNAPSHOT'
+	id 'fabric-loom' version '1.0-SNAPSHOT'
 	id 'maven-publish'
 	id 'java-library'
 	id 'com.github.johnrengelman.shadow' version '7.0.0'
@@ -23,6 +23,11 @@ repositories {
 	mavenCentral()
 
 	maven {
+		name = 'Fabric'
+		url = 'https://maven.fabricmc.net/'
+	}
+
+	maven {
 		name "Terraformersmc"
 		url = "https://maven.terraformersmc.com/"
 	}
@@ -39,7 +44,7 @@ repositories {
 
 	maven {
 		name = 'Gegy'
-		url = 'https://maven.gegy.dev'
+		url = 'https://maven.gegy.dev/'
 	}
 
 }
@@ -69,8 +74,8 @@ dependencies {
 	include "dev.lambdaurora:spruceui:${project.spruceui_version}"
 
 	// Toml Night-Config
-	shadow 'com.electronwill.night-config:core:3.6.4'
-	shadow 'com.electronwill.night-config:toml:3.6.4'
+	shadow 'com.electronwill.night-config:core:3.6.6'
+	shadow 'com.electronwill.night-config:toml:3.6.6'
 }
 
 if (project.use_third_party_mods) {
@@ -130,14 +135,18 @@ shadowJar {
 	relocate 'com.electronwill.nightconfig', 'com.github.quaoz.shadow.nightconfig'
 }
 
-task shadowRemapJar(type: RemapJarTask) {
-	dependsOn shadowJar
-
-	input.set(file("${project.buildDir}/libs/$archivesBaseName-${project.version}-dev.jar"))
-	archiveFileName = "${archivesBaseName}-${project.version}.jar"
-	addNestedDependencies.set(true)
+remapJar {
+	inputFile = shadowJar.archiveFile
 }
-build.dependsOn(shadowRemapJar)
+
+//task shadowRemapJar(type: RemapJarTask) {
+//	dependsOn shadowJar
+//
+//	input.set(file("${project.buildDir}/libs/$archivesBaseName-${project.version}-dev.jar"))
+//	archiveFileName = "${archivesBaseName}-${project.version}.jar"
+//	addNestedDependencies.set(true)
+//}
+//build.dependsOn(tasks.shadowRemapJar)
 
 // configure the maven publication
 publishing {
