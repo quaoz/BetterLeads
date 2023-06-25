@@ -5,6 +5,7 @@ plugins {
 	id 'java-library'
 	id 'com.github.johnrengelman.shadow' version '7.1.2'
 	id "com.modrinth.minotaur" version "2.+"
+	id 'com.matthewprenger.cursegradle' version '1.4.+'
 }
 
 def targetJavaVersion = 17
@@ -16,6 +17,16 @@ archivesBaseName = project.archives_base_name
 boolean isMCVersionNonRelease() {
 	return project.minecraft_version.matches('^\\d\\dw\\d\\d[a-z]$')
 		|| project.minecraft_version.matches('\\d+\\.\\d+-(pre|rc)(\\d+)')
+}
+
+String getVersionType() {
+	if (isMCVersionNonRelease() || version.contains("-alpha.")) {
+		return "alpha"
+	} else if (version.contains("-beta.")) {
+		return "beta"
+	} else {
+		return "release"
+	}
 }
 
 repositories {
@@ -114,7 +125,6 @@ shadowJar {
 remapJar.dependsOn(shadowJar)
 
 modrinth {
-	token = System.getenv("MODRINTH_TOKEN")
 	projectId = project.modrinth_id
 
 	versionName = "BetterLeads ${project.mod_version}"
@@ -133,11 +143,38 @@ modrinth {
 }
 tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
 
-// configure the maven publication
+curseforge {
+	if (System.getenv("CURSEFORGE_TOKEN")) {
+		apiKey = System.getenv("CURSEFORGE_TOKEN")
+	}
+
+	project {
+		id = project.curseforge_id
+		releaseType = this.getVersionType()
+		addGameVersion project.minecraft_version
+		addGameVersion "Fabric"
+		addGameVersion "Quilt"
+		addGameVersion "Java 17"
+		addGameVersion "Java 18"
+
+		mainArtifact(remapJar) {
+			displayName = "BetterLeads ${project.mod_version}"
+
+			relations {
+				requiredDependency "fabric-api"
+				optionalDependency "modmenu"
+			}
+		}
+
+		afterEvaluate {
+			uploadTask.dependsOn("remapJar")
+		}
+	}
+}
+
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			// add all the jars that should be included when publishing to maven
 			artifact(remapJar) {
 				builtBy remapJar
 			}
@@ -147,11 +184,7 @@ publishing {
 		}
 	}
 
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
+
 	}
 }
