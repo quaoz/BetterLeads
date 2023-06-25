@@ -1,9 +1,10 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id 'fabric-loom' version '1.2+'
 	id 'io.github.juuxel.loom-quiltflower' version '1.8.+'
 	id 'maven-publish'
 	id 'java-library'
 	id 'com.github.johnrengelman.shadow' version '7.1.2'
+	id "com.modrinth.minotaur" version "2.+"
 }
 
 def targetJavaVersion = 17
@@ -11,6 +12,11 @@ def targetJavaVersion = 17
 group = project.maven_group
 version = "${project.mod_version}+${project.minecraft_version}"
 archivesBaseName = project.archives_base_name
+
+boolean isMCVersionNonRelease() {
+	return project.minecraft_version.matches('^\\d\\dw\\d\\d[a-z]$')
+		|| project.minecraft_version.matches('\\d+\\.\\d+-(pre|rc)(\\d+)')
+}
 
 repositories {
 	mavenCentral()
@@ -106,6 +112,26 @@ shadowJar {
 }
 
 remapJar.dependsOn(shadowJar)
+
+modrinth {
+	token = System.getenv("MODRINTH_TOKEN")
+	projectId = project.modrinth_id
+
+	versionName = "BetterLeads ${project.mod_version}"
+	versionType = isMCVersionNonRelease() ? "beta" : "release"
+
+	gameVersions = [project.minecraft_version]
+	loaders = ["fabric", "quilt"]
+	uploadFile = tasks.remapJar
+
+	dependencies {
+		required.project "fabric-api"
+		optional.project "modmenu"
+	}
+
+	syncBodyFrom = rootProject.file("README.md").text
+}
+tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
 
 // configure the maven publication
 publishing {

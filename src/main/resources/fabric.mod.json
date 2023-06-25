@@ -7,6 +7,10 @@
   "authors":       [
     "quaoz"
   ],
+  "contributors": [
+    "solonovamax",
+    "tyleraharrison"
+  ],
   "contact":       {
     "homepage": "https://github.com/quaoz/BetterLeads",
     "sources":  "https://github.com/quaoz/BetterLeads",
