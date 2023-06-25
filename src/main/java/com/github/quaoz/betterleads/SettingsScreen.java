@@ -11,7 +11,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.Nullable;
 
@@ -72,11 +71,6 @@ public class SettingsScreen extends SpruceScreen {
 
 	private int getTextHeight() {
 		return (5 + this.textRenderer.fontHeight) * 3 + 5;
-	}
-
-	@Override
-	public void renderBackground(MatrixStack matrices) {
-		this.renderBackgroundTexture(0);
 	}
 
 	@Override

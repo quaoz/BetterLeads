@@ -27,13 +27,13 @@
     "betterleads.mixins.json"
   ],
   "depends":       {
-    "fabricloader": ">=0.7.4",
-    "fabric":       "*",
-    "minecraft":    "^1.19",
-    "spruceui":     ">=3.1.0",
+    "fabricloader": ">=0.14.21",
+    "fabric":       ">=0.84.0+1.20.1",
+    "minecraft":    "~1.20",
+    "spruceui":     ">=5.0.0",
     "java":         ">=17"
   },
   "recommends":    {
-    "modmenu": ">=2.0.0-beta.7"
+    "modmenu": ">=7.1.0"
   }
 }

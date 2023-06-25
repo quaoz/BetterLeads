@@ -2,7 +2,6 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/quaoz/BetterLeads/build)
 ![GitHub issues](https://img.shields.io/github/issues-raw/quaoz/BetterLeads)
 
-
 # BetterLeads
 
 A mod that allows you to use leads on more entities.
@@ -20,12 +19,11 @@ The Mobs which it doesn't work properly with are:
 - Vexs
 - and Bats
 
-
 ## Usage
 
 Put the latest release from [Modrinth](https://modrinth.com/mod/betterleads), [GitHub](https://github.com/quaoz/BetterLeads/releases) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/betterleads) in your mods folder along
 with [Fabric API](https://modrinth.com/mod/fabric-api) and [ModMenu](https://modrinth.com/mod/modmenu).
 
-## Building
+## Configuration
 
-Clone the repo and run `./gradlew shadowRemapJar`
+If you are playing in singleplayer the mod can configured through ModMenu, if the mod is installed on a server it can be configured by editing the `betterleads.toml` file in the config directory.
