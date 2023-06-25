@@ -29,6 +29,14 @@ String getVersionType() {
 	}
 }
 
+String getMCVersionString() {
+	if (isMCVersionNonRelease()) {
+		return project.minecraft_version
+	}
+	def version = project.minecraft_version.split('\\.')
+	return version[0] + '.' + version[1]
+}
+
 repositories {
 	mavenCentral()
 
@@ -127,7 +135,7 @@ remapJar.dependsOn(shadowJar)
 modrinth {
 	projectId = project.modrinth_id
 
-	versionName = "BetterLeads ${project.mod_version}"
+	versionName = "BetterLeads v${project.mod_version} (${getMCVersionString()})"
 	versionType = isMCVersionNonRelease() ? "beta" : "release"
 
 	gameVersions = [project.minecraft_version]
@@ -158,7 +166,7 @@ curseforge {
 		addGameVersion "Java 18"
 
 		mainArtifact(remapJar) {
-			displayName = "BetterLeads ${project.mod_version}"
+			displayName = "BetterLeads v${project.mod_version} (${project.minecraft_version})"
 
 			relations {
 				requiredDependency "fabric-api"
