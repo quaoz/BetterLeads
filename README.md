@@ -1,5 +1,5 @@
 ![GitHub License](https://img.shields.io/github/license/quaoz/BetterLeads)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/quaoz/BetterLeads/build)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/quaoz/BetterLeads/build.yml)
 ![GitHub issues](https://img.shields.io/github/issues-raw/quaoz/BetterLeads)
 
 # BetterLeads
