@@ -17,8 +17,6 @@ public class BetterLeads implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		INSTANCE = this;
-		this.log("its alive");
-
 		this.config.load();
 	}
 
